@@ -1,6 +1,9 @@
 from enum import Enum
 
-from fastapi import FastAPI
+import fastapi
+from fastapi import FastAPI, Query
+
+from pydantic import BaseModel
 
 app = FastAPI()
 
@@ -10,6 +13,13 @@ class ModelName(str, Enum):
     resnet = "resnet"
     lenet = "lenet"
     alan = "alan"
+
+
+class Item(BaseModel):
+    name: str
+    description: str | None = None
+    price: float
+    tax: float | None = None
 
 
 @app.get("/")
@@ -43,12 +53,19 @@ async def get_model(model_name: ModelName):
 fake_items_db = [{"item_name": "Foo"}, {"item_name": "Bar"}, {"item_name": "Baz"}]
 
 
-@app.get("/items/")
-async def read_item(skip: int = 0, limit: int = 10):
-    return fake_items_db[skip: skip + limit]
-
-
 @app.get("/items/{item_id}")
-async def read_user_item(item_id: str, needy: str):
-    item = {"item_id": item_id, "needy": needy}
+async def read_user_item(
+        item_id: str, needy: str, skip: int = 0, limit: int | None = None
+):
+    item = {"item_id": item_id, "needy": needy, "skip": skip, "limit": limit}
     return item
+
+
+@app.get("/items/")
+async def read_items(q: str = Query(default="fixedquery", min_length=3)):
+    results = {"items": [{"item_id": "Foo"}, {"item_id": "Bar"}]}
+    if q:
+        results.update({"q": q})
+    return results
+
+
