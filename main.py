@@ -1,8 +1,8 @@
 from fastapi import FastAPI
 from typing import Union
+from enum import Enum
 import pydantic
 print('compiled:', pydantic.compiled)
-
 #from pydantic import BaseMode1
 
 app = FastAPI()
@@ -28,11 +28,6 @@ async def read_item(item_id: int, q: Union[str, None] = None):
 @app.get("/users")
 async def red_users():
     return ["Rick"]
-
-from enum import Enum
-
-from fastapi import FastAPI
-
 
 class ModelName(str, Enum):
     louis = "louis"
