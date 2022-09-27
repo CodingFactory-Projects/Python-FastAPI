@@ -9,6 +9,8 @@ class Item(BaseModel):
     name: str
     price: float
     is_offer: Union[bool, None] = None
+
+
 @app.get("/")
 async def root():
     return {"message": "Hello World"}
@@ -21,3 +23,7 @@ def read_item(item_id: int, q: Union[str, None] = None):
 @app.put("/items/{item_id}")
 def update_item(item_id: int, item: Item):
     return {"item_price": item.price, "item_id": item_id}
+@app.get("/people/{name}/{age}")
+def get_name_with_age(name: str, age: int):
+    name_with_age = name + " is this old " + str(age)+"years old."
+    return {"name": name, "age": age, "description": name_with_age}
