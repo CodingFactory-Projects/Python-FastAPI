@@ -20,11 +20,12 @@ def load_data():
 
 
 json_data = load_data()
+user_list = []
 
 
 @app.get("/users/")
 async def get_users():
-    for user in json_data:
-        return user
-
-
+    for user in json_data['users']:
+        if user not in user_list:
+            user_list.append(user)
+    return user_list
