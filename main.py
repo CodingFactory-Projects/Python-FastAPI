@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+import json
 
 app = FastAPI()
 
@@ -11,3 +12,19 @@ async def root():
 @app.get("/hello/{name}")
 async def say_hello(name: str):
     return {"message": f"Hello {name}"}
+
+
+def load_data():
+    with open('data.json') as f:
+        return json.load(f)
+
+
+json_data = load_data()
+
+
+@app.get("/users/")
+async def get_users():
+    for user in json_data:
+        return user
+
+
