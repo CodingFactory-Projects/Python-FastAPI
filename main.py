@@ -16,7 +16,6 @@ app = FastAPI()
 async def root():
     return {"message": "Hello World"}
 
-
 @app.get("/hello/{name}")
 async def say_hello(name: str):
     return {"message": f"Hello {name}"}
@@ -24,6 +23,10 @@ async def say_hello(name: str):
 @app.get("/items/{item_id}")
 async def read_item(item_id: int, q: Union[str, None] = None):
     return {"item-id": item_id, "q": q}
+
+#@app.put("/items/{item_id}")
+#async def update_item(item_id: int, item: Item):
+    #return {"item_id": item_id, "item_name": item.name}
 
 @app.get("/users")
 async def red_users():
@@ -44,8 +47,11 @@ async def get_model(model_name: ModelName):
 
     return {"model_name": model_name, "message": "clito"}
 
+fake_items_db = [{"item_name": "Foo"}, {"item_name": "Bar"}, {"item_name": "Baz"}]
 
-#@app.put("/items/{item_id}")
-#async def update_item(item_id: int, item: Item):
-    #return {"item_id": item_id, "item_name": item.name}
+@app.get("/names/")
+async def read_name(skip: int = 0, limit: int = 10):
+    return fake_items_db[skip: skip + limit]
+
+
 
