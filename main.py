@@ -85,4 +85,14 @@ def say_hi(name: Optional[str] = None):
         print("Hello World")
 
 
-say_hi("Rui")
+# say_hi("Rui")
+
+
+def say_hi2(name: str | None = None):
+    if name is not None:
+        print(f"Hey {name}!")
+    else:
+        print("Hello World")
+
+
+say_hi2()
