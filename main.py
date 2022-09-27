@@ -1,12 +1,9 @@
 from datetime import datetime
 
 from fastapi import FastAPI
-<<<<<<< Updated upstream
-=======
-import json
->>>>>>> Stashed changes
 
-# from typing import Union
+import json
+
 from typing import List, Optional
 
 from pydantic import BaseModel
@@ -22,8 +19,6 @@ async def root():
     return {"message": "Hello World"}, data
 
 
-
 @app.get("/hello/{name}")
 async def say_hello(name: str):
     return {"message": f"Hello {name}"}
-
