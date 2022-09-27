@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 
 # from typing import Union
-from typing import List
+from typing import List, Optional
 
 app = FastAPI()
 
@@ -75,4 +75,14 @@ def process_item(item: int | str):
     print(item)
 
 
-process_item("hello world!")
+# process_item("hello world!")
+
+
+def say_hi(name: Optional[str] = None):
+    if name is not None:
+        print(f"Hey {name}!")
+    else:
+        print("Hello World")
+
+
+say_hi("Rui")
