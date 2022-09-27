@@ -68,4 +68,11 @@ def process_items3(prices: dict[str, float]):
         print(item_price)
 
 
-print(process_items3({"banana": 4, "apple": 2, "orange": 1.5}))
+# print(process_items3({"banana": 4, "apple": 2, "orange": 1.5}))
+
+
+def process_item(item: int | str):
+    print(item)
+
+
+process_item("hello world!")
