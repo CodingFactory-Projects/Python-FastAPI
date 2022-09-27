@@ -45,7 +45,7 @@ async def read_item(item_id: str, q: str | None = None, short: bool = False):
         )
     return item
 
-## Routes display item with multiple query parameters (skip,limit)
+## Routes display item with multiple query parameters
 @app.get("/users/{user_id}/items/{item_id}")
 async def read_user_item(
     user_id: int, item_id: str, q: str | None = None, short: bool = False
@@ -57,4 +57,17 @@ async def read_user_item(
         item.update(
             {"description": "This is an amazing item that has a long description"}
         )
+    return item
+
+## Routes display produit with required query parameters
+@app.get("/produits/{item_id}")
+async def read_user_item(item_id: str, requis: str):
+    item = {"item_id": item_id, "requis": requis}
+    return item
+## Routes display shoes with 3 query parameters
+@app.get("/shoes/{item_id}")
+async def read_user_item(
+    item_id: str, needy: str, skip: int = 0, limit: int | None = None
+):
+    item = {"item_id": item_id, "needy": needy, "skip": skip, "limit": limit}
     return item
