@@ -1,6 +1,10 @@
 from datetime import datetime
 
 from fastapi import FastAPI
+<<<<<<< Updated upstream
+=======
+import json
+>>>>>>> Stashed changes
 
 # from typing import Union
 from typing import List, Optional
@@ -9,10 +13,14 @@ from pydantic import BaseModel
 
 app = FastAPI()
 
+with open('data.json') as f:
+    data = json.load(f)
+
 
 @app.get("/")
 async def root():
-    return {"message": "Hello World"}
+    return {"message": "Hello World"}, data
+
 
 
 @app.get("/hello/{name}")
