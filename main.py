@@ -95,4 +95,16 @@ def say_hi2(name: str | None = None):
         print("Hello World")
 
 
-say_hi2()
+# say_hi2()
+
+
+class Person:
+    def __init__(self, name: str):
+        self.name = name
+
+
+def get_person_name(one_person: Person):
+    return one_person.name
+
+
+# print(get_person_name(Person("Rui")))
