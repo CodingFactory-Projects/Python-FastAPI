@@ -364,3 +364,6 @@ archive.zip
 # vim temporary files
 *~
 .*.sw?
+
+# Database
+database.py
