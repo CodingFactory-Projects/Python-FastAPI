@@ -47,10 +47,15 @@ def get_items(item_a: str, item_b: int, item_c: float, item_d: bool, item_e: byt
 # print(get_items("hello world!", 3481, 452.44, True, b"A"))
 
 
-def process_items(items: List[str]):
-    for item in items:
-        print(item)
+# def process_items(items: List[str]):
+#     for item in items:
+#         print(item)
+#
+#
+# print(process_items(["hello world!", "hello world2!", "hello world3!"]))
+
+def process_items(items_t: tuple[int, int, str], items_s: set[bytes]):
+    return items_t, items_s
 
 
-print(process_items(["hello world!", "hello world2!", "hello world3!"]))
-
+print(process_items((1, 2, "hello world!"), {b"hello", b"world"}))
