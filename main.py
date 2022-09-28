@@ -28,10 +28,9 @@ async def create_orders(order_id: int, order: Order):
     result = {
         "order_id": order_id,
         "product": order.products,
-        "client_id": order.client_id
+        "client_id": order.client_id,
+        "total_price": order.products["price"] * order.products["quantity"]
     }
-    newOrder = json.dumbs(result)
-    jsonfile = open("data.json","w")
-    jsonfile.write(newOrder)
-    jsonfile.close()
+
+
     return result
