@@ -47,3 +47,15 @@ async def get_sneaker_name(sneaker_id: int):
         if sneaker_id == sneaker['id']:
             return sneaker["name"]
 
+# POST METHODS
+
+@app.post("/sneakers")
+async def create_sneaker(sneaker: Sneakers):
+    # ouvrir le fichier json
+    with open('data.json') as f:
+        data = json.load(f)
+    with open('data.json', mode="w") as f:
+        data['sneakers'].append(sneaker.dict())
+        f.write(json.dumps(data, indent=2, separators=(',', ': ')))
+        print(data)
+    return data
