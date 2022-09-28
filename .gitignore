@@ -366,4 +366,5 @@ archive.zip
 .*.sw?
 
 # Database
-database.py
+data.json
+data.save
