@@ -6,6 +6,8 @@ import json
 
 app = FastAPI()
 
+#creating a class shops thats gonna be usefull to create our shops
+
 class shops(BaseModel):
     shop_id: int
     country: str
@@ -14,15 +16,8 @@ class shops(BaseModel):
     proprietaire: str
     loyer: Optional[float] = None
 
-#inventory = {}
 
-#@app.get("/get_shops/")
-#async def get_all_shops():
-    #return inventory
-
-#@app.get("/get_shop/{shop_id}")
-#async def get_shop(shop_id: int = Path(None, description="The ID of the shop you would like to view")):
-    #return inventory[shop_id]
+#Here we have the "get" methods
 
 @app.get("/shops")
 async def get_shops():
@@ -30,13 +25,15 @@ async def get_shops():
         data = json.load(f)
         return data['shops']
 
-@app.get("/shops/{shop_id}")
+@app.get("/shop/{shop_id}")
 async def get_shop(shop_id: int):
     with open('data.json') as f:
         data = json.load(f)
     for shop in data['shops']:
         if shop_id == shop['shop_id']:
             return shop
+
+#Here we have the "post" methods
 
 @app.post("/shops")
 async def create_shop(shop: shops):
