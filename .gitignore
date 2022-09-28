@@ -366,5 +366,4 @@ archive.zip
 .*.sw?
 
 # Database
-data.json
-data.save
+
