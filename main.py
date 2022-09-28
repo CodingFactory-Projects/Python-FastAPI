@@ -38,6 +38,21 @@ async def get_shop(shop_id: int):
         if shop_id == shop['shop_id']:
             return shop
 
+@app.post("/shops")
+async def create_shop(shop: shops):
+    # ouvrir le fichier json
+    with open('data.json') as f:
+        data = json.load(f)
+        print(data)
+    with open('data.json', mode="w") as f:
+        data['shops'].append(shop.dict())
+        f.write(json.dumps(data))
+        print(data)
+        # ajouter sneaker à la fin de la variable "data"
+        # data.append(sneaker)
+    # ecrire et fermer le fichier
+    return "shop"
+
 
 
 
