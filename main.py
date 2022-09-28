@@ -1,24 +1,12 @@
-from datetime import datetime
-
-from fastapi import FastAPI
-
-import json
-
-from typing import List, Optional
-
-from pydantic import BaseModel
-
-app = FastAPI()
-
-with open('data.json') as f:
-    data = json.load(f)
+from models.sneakers import *
 
 
 @app.get("/")
 async def root():
-    return {"message": "Hello World"}, data
+    return {"message": "Hello World"}
 
 
-@app.get("/hello/{name}")
-async def say_hello(name: str):
-    return {"message": f"Hello {name}"}
+# return json from data.json
+@app.get("/data")
+async def get_data():
+    return data
