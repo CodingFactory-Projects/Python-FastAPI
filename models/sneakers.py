@@ -87,3 +87,16 @@ async def update_sneaker(sneaker_id: int, edited_sneaker: EditedSneaker):
                 f.write(json.dumps(data, indent=2, separators=(',', ': ')))
                 return "Sneaker as been updated"
     return "Sneaker not found"
+
+
+@app.delete('/sneaker/{sneaker_id}')
+async def delete_sneaker(sneaker_id: int):
+    with open('data.json') as f:
+        data = json.load(f)
+    for sneaker in data['sneakers']:
+        if sneaker_id == sneaker['id']:
+            data['sneakers'].remove(sneaker)
+            with open('data.json', mode="w") as f:
+                f.write(json.dumps(data, indent=2, separators=(',', ': ')))
+                print(data)
+            return data
