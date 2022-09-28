@@ -78,11 +78,10 @@
   ],
   "orders": [
     {
-      "id": 1,
+      "order_id": 1,
       "products": [
         {
           "product_id": 1,
-          "variant": 0,
           "quantity": 1
         }
       ],
