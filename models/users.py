@@ -37,3 +37,14 @@ async def create_user(user: User):
         data['users'].append(user.dict())
         f.write(json.dumps(data, indent=2, separators=(',', ': ')))
     return 'user'
+
+
+@app.delete("/users/{user_id}")
+async def delete_users(user_id: int):
+    for user in data['users']:
+        if user_id == user['id']:
+            data['users'].remove(user)
+            with open('data.json', mode="w") as f:
+                f.write(json.dumps(data, indent=2, separators=(',', ': ')))
+                print(data)
+            return data
