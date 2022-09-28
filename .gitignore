@@ -367,3 +367,5 @@ archive.zip
 
 # Database
 
+data.json
+data.save
