@@ -17,3 +17,10 @@ async def get_sneaker(sneaker_id: int):
     for sneaker in data['sneakers']:
         if sneaker_id == sneaker['id']:
             return sneaker
+
+
+@app.get("/data/sneakers/name/{sneaker_id}")
+async def get_sneaker_name(sneaker_id: int):
+    for sneaker in data['sneakers']:
+        if sneaker_id == sneaker['id']:
+            return sneaker["name"]
