@@ -8,6 +8,12 @@ class Order(BaseModel):
     products: dict
     client_id: int
     total_price: float | None = None
+
+#Permet de récupérer nos commandes dans notre ficheir json
+def recupJson():
+    with open('data.json','r') as f:
+        orders = json.load(f)["orders"]
+    return orders
 @app.get("/")
 async def root():
     return {"message": "Hello World"}
@@ -16,21 +22,27 @@ async def root():
 @app.get("/hello/{name}")
 async def say_hello(name: str):
     return {"message": f"Hello {name}"}
-
+#Recupere toutes les commandes du json
 @app.get("/orders")
 async def read_orders():
-    with open('data.json','r') as f:
-        orders = json.load(f)["orders"]
-    return orders
+    return recupJson()
 
-@app.post("/orders/{order_id}")
-async def create_orders(order_id: int, order: Order):
-    result = {
-        "order_id": order_id,
-        "product": order.products,
-        "client_id": order.client_id,
-        "total_price": order.products["price"] * order.products["quantity"]
-    }
+#Recupere les commandes en fonction de son id
+@app.get("/orders/{order_id}")
+async def get_orders_by_order_id(order_id: int):
+    data = recupJson()
+    print(type(data))
+    for x in data:
+        if x["order_id"] == order_id :
+           return x
+    return "Nothing here"
 
 
-    return result
+#Permet de créer une commande
+@app.post("/orders")
+async def create_user(user: Order):
+    data = recupJson()
+    with open('data.json', mode='w') as f:
+        data['orders'].append(user.dict())
+        f.write(json.dumps(data, indent=2, separators=(',', ': ')))
+    return 'user'
