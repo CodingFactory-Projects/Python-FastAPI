@@ -67,8 +67,7 @@ async def create_sneaker(sneaker: Sneakers):
     with open('data.json', mode="w") as f:
         data['sneakers'].append(sneaker.dict())
         f.write(json.dumps(data, indent=2, separators=(',', ': ')))
-        print(data)
-    return data
+        return "Sneaker has been added"
 
 
 @app.put("/sneakers/{sneaker_id}")
@@ -99,4 +98,5 @@ async def delete_sneaker(sneaker_id: int):
             with open('data.json', mode="w") as f:
                 f.write(json.dumps(data, indent=2, separators=(',', ': ')))
                 print(data)
-            return data
+            return "Sneaker has been deleted"
+    return "Sneaker not found"
