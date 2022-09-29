@@ -45,7 +45,7 @@ async def get_orders_by_order_id(id_order: int):
     return "Not found"
 
 #Update command thanks to its id_order
-@app.put("/orders/")
+@app.patch("/orders/")
 async def update_orders_by_order_id(order: Order):
     data = recupJson()
     for x in data["orders"]:
