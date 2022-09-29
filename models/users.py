@@ -32,8 +32,8 @@ async def get_user_by_id(user_id: int):
 # Function to post users from data.json
 
 class User(BaseModel):
-    id: int | None = None
-    username: str
+    id: int
+    username: str | None = None
     money: int | None = None
 
 
@@ -67,10 +67,12 @@ async def update_user(user_id: int, user: User):
             stored_user_data = users
             stored_user_model = User(**stored_user_data)
             update_data = user.dict(exclude_unset=True)
-            stored_user_model.copy(update=update_data)
+            stored_user_model = stored_user_model.copy(update=update_data)
+            users['username'] = stored_user_model.username
+            users['money'] = stored_user_model.money
             with open('data.json', mode="w") as f:
                 f.write(json.dumps(data, indent=2, separators=(',', ': ')))
-                return update_data
+                return stored_user_model
 
 
 @app.put("/users/{user_id}")
