@@ -1,4 +1,4 @@
-from fastapi import FastAPI, Path
+from fastapi import FastAPI, HTTPException
 from typing import Optional
 from pydantic import BaseModel
 
@@ -47,6 +47,7 @@ async def create_shop(shop: shops):
         print(data)
     return "shop"
 
+#Here we have the "post" methods
 
 @app.delete("/shops")
 async def delete_shop(shop_id: int):
@@ -58,8 +59,8 @@ async def delete_shop(shop_id: int):
             with open('data.json', mode="w") as f:
                 f.write(json.dumps(data))
             return data['shops']
-        else:
-            return {"message": "existe pas"}
+    return HTTPException(status_code=404, detail="Shop doesnt exist")
+
 
 
 
