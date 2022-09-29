@@ -37,7 +37,7 @@ async def get_shop(shop_id: int):
 
 @app.post("/shops")
 async def create_shop(shop: shops):
-    # ouvrir le fichier json
+    # ouvre le json
     with open('data.json') as f:
         data = json.load(f)
         print(data)
@@ -45,10 +45,21 @@ async def create_shop(shop: shops):
         data['shops'].append(shop.dict())
         f.write(json.dumps(data))
         print(data)
-        # ajouter sneaker à la fin de la variable "data"
-        # data.append(sneaker)
-    # ecrire et fermer le fichier
     return "shop"
+
+
+@app.delete("/shops")
+async def delete_shop(shop_id: int):
+    with open('data.json') as f:
+        data = json.load(f)
+    for shop in data['shops']:
+        if shop_id == shop['shop_id']:
+            data['shops'].remove(shop)
+            with open('data.json', mode="w") as f:
+                f.write(json.dumps(data))
+            return data['shops']
+        else:
+            return {"message": "existe pas"}
 
 
 
