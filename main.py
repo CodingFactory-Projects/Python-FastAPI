@@ -44,6 +44,19 @@ async def get_orders_by_order_id(id_order: int):
            return x
     return "Not found"
 
+#Update command thanks to its id_order
+@app.put("/orders/")
+async def update_orders_by_order_id(order: Order):
+    data = recupJson()
+    for x in data["orders"]:
+        print(x["id_order"])
+        if x["id_order"] == order.id_order:
+            order.total_price = order.products.price * order.products.quantity
+            with open('data.json', 'w') as f:
+                data["orders"].remove(x)
+                data["orders"].append(order.dict())
+                f.write(json.dumps(data, sort_keys=True, indent=4))
+    return "Not found"
 
 #Allows you to create an order
 @app.post("/orders")
@@ -53,7 +66,7 @@ async def create_order(order: Order):
     with open('data.json','w') as f:
         data["orders"].append(order.dict())
         f.write(json.dumps(data, sort_keys=True, indent=4))
-    return order
+    return "Your order has been registered "
 #Allows you to delete an order
 @app.delete("/orders/{id_order}")
 async def delete_order(id_order: int):
