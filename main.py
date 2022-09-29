@@ -3,16 +3,22 @@ from pydantic import BaseModel
 import json
 app = FastAPI()
 
-
+#class girl
+class Products(BaseModel):
+    product_id: int
+    price: float
+    quantity: int
+# Parent class
 class Order(BaseModel):
-    products: dict
+    id_order: int
+    products: list[Products] | Products
+    total_price: int | None
     client_id: int
-    total_price: float | None = None
 
-#Permet de récupérer nos commandes dans notre ficheir json
+#Allows us to retrieve our commands in our json file
 def recupJson():
     with open('data.json','r') as f:
-        orders = json.load(f)["orders"]
+        orders = json.load(f)
     return orders
 @app.get("/")
 async def root():
@@ -22,27 +28,48 @@ async def root():
 @app.get("/hello/{name}")
 async def say_hello(name: str):
     return {"message": f"Hello {name}"}
-#Recupere toutes les commandes du json
+
+#Get all commands from json
 @app.get("/orders")
 async def read_orders():
-    return recupJson()
+    data =recupJson()
+    return data["orders"]
 
-#Recupere les commandes en fonction de son id
-@app.get("/orders/{order_id}")
-async def get_orders_by_order_id(order_id: int):
+#Retrieves orders based on its id
+@app.get("/orders/{id_order}")
+async def get_orders_by_order_id(id_order: int):
     data = recupJson()
-    print(type(data))
-    for x in data:
-        if x["order_id"] == order_id :
+    for x in data["orders"]:
+        if x["id_order"] == id_order:
            return x
-    return "Nothing here"
+    return "Not found"
 
 
-#Permet de créer une commande
+#Allows you to create an order
 @app.post("/orders")
-async def create_user(user: Order):
+async def create_order(order: Order):
     data = recupJson()
-    with open('data.json', mode='w') as f:
-        data['orders'].append(user.dict())
-        f.write(json.dumps(data, indent=2, separators=(',', ': ')))
-    return 'user'
+    order.total_price = order.products.price * order.products.quantity
+    with open('data.json','w') as f:
+        data["orders"].append(order.dict())
+        f.write(json.dumps(data, sort_keys=True, indent=4))
+    return order
+#Allows you to delete an order
+@app.delete("/orders/{id_order}")
+async def delete_order(id_order: int):
+    data = recupJson()
+    for x in data["orders"]:
+        if x["id_order"] == id_order:
+            with open('data.json', 'w') as f:
+                data["orders"].remove(x)
+                f.write(json.dumps(data, sort_keys=True, indent=4))
+    return "Your order has been deleted "
+#Allows you to delete all order
+@app.delete("/orders/")
+async def delete_all_orders():
+    data = recupJson()
+    for x in data["orders"]:
+        with open('data.json', 'w') as f:
+            data["orders"].clear()
+            f.write(json.dumps(data, sort_keys=True, indent=4))
+    return "Your orders has been deleted "
