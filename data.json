@@ -101,6 +101,33 @@
       "colors": "noir/marron",
       "price": 899999999.0,
       "stock": 100000
+    },
+    {
+      "id": 12,
+      "img": "elium",
+      "name": "emil",
+      "description": "elim le boss",
+      "colors": "noir/marron",
+      "price": 899999999.0,
+      "stock": 100000
+    },
+    {
+      "id": 13,
+      "img": "elium",
+      "name": "emil",
+      "description": "elim le boss",
+      "colors": "noir/marron",
+      "price": 899999999.0,
+      "stock": 100000
+    },
+    {
+      "id": 14,
+      "img": "elium",
+      "name": "emil",
+      "description": "elim le boss",
+      "colors": "noir/marron",
+      "price": 899999999.0,
+      "stock": 100000
     }
   ],
   "orders": [
@@ -125,6 +152,26 @@
       },
       "total_price": 725.0,
       "client_id": 1
+    },
+    {
+      "id_order": 4,
+      "products": {
+        "product_id": 3,
+        "price": 145.0,
+        "quantity": 5
+      },
+      "total_price": 725.0,
+      "client_id": 1
+    },
+    {
+      "id_order": 4,
+      "products": {
+        "product_id": 3,
+        "price": 145.0,
+        "quantity": 5
+      },
+      "total_price": 725.0,
+      "client_id": 1
     }
   ],
   "clients": [
@@ -137,5 +184,23 @@
         1
       ]
     }
-  ]
+  ],
+   "shops": [
+   {
+     "shop_id": 1,
+     "country": "Chine",
+     "city": "Shanghai",
+     "adresse": "12 rue de shanghai",
+     "proprietaire": "Louis",
+     "loyer": 5000.0
+   },
+   {
+     "shop_id": 2,
+     "country": "France",
+     "city": "Paris",
+     "adresse": "12 rue de lamartine",
+     "proprietaire": "Alan",
+     "loyer": 10000.0
+   }
+   ]
 }
