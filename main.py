@@ -1,11 +1,6 @@
+from fastapi import FastAPI
+from methodes.orders import *
 from models.shops import *
 
+#app = FastAPI()
 
-@app.get("/")
-async def root():
-    return {"message": "Hello World"}
-
-
-@app.get("/hello/{name")
-async def say_hello(name: str):
-    return {"messages": f"Hello {name}"}
