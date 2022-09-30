@@ -241,6 +241,7 @@ async def update_orders_by_order_id(order: Order):
                 data["orders"].remove(x)
                 data["orders"].append(order.dict())
                 write_data()
+                return order
     return "Not found"
 
 
