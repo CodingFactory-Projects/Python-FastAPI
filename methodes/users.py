@@ -1,15 +1,8 @@
 from fastapi import FastAPI
 import json
-
-from pydantic import BaseModel
+from classes.UsersClass import User
 
 app = FastAPI()
-
-
-class User(BaseModel): # Create an object which will be used to validate the data and modified
-    id: int
-    username: str | None = None
-    money: int | None = None
 
 
 # Function to load data from json file
