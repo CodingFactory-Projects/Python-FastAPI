@@ -364,3 +364,8 @@ archive.zip
 # vim temporary files
 *~
 .*.sw?
+
+# Database
+
+data.json
+data.save
