@@ -1,0 +1,104 @@
+ {
+  "users": [
+    {
+      "id": 1,
+      "username": "Test",
+      "money": 1000,
+      "factories": []
+    },
+    {
+      "id": 2,
+      "username": "Rui",
+      "money": 10000,
+      "factories": []
+    }
+  ],
+  "posts": [
+    {
+      "id": 1,
+      "title": "",
+      "content": "Markdown ? HTML ? Just Text ?",
+      "author": "",
+      "publishedAt": "Date ?",
+      "category": 1
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "title": "Non-classé"
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "img": "https://www.kindpng.com/picc/m/760-7602620_air-jordan-4-travis-scott-jordan-4-cactus.png",
+      "name": "Travis Scott X Jordan 4 Cactus Jack",
+      "descriptions": "De par cette collaboration, le rappeur américain Travis Scott fait un hommage à Houston ",
+      "colors": "UNIVERSITY BLUE/BLACK-VARSITY RED",
+      "price": 199,
+      "stock": 15
+    },
+    {
+      "id": 2,
+      "img": "https://cdn.shopify.com/s/files/1/2358/2817/products/air-jordan-1-low-bred-toe-wethenew-2_1200x.png?v=1641552353.png",
+      "name": "AIR JORDAN 1 RETRO LOW BRED TOE GS",
+      "descriptions": "Le Jumpman continue de jouer sur ses classiques avec la Air Jordan 1 Low Bred Toe (2021).",
+      "colors": "GYM RED/WHITE-BLACK",
+      "price": 399,
+      "stock": 10
+    },
+    {
+      "name": "air max",
+      "img": "https://www.kindpng.com/picc/m/760-7602620_air-jordan-4-travis-scott-jordan-4-cactus.png",
+      "description": "DDD",
+      "color": "Yellow",
+      "price": "122",
+      "stock": "344",
+      "id": 3
+    },
+    {
+      "name": "Air jordan",
+      "img": "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,b_rgb:f5f5f5/d81fee2a-e014-4fa1-9f6c-1870e8554a07/chaussure-air-jordan-1-mid-D8Q2S1.png",
+      "description": "Dior",
+      "color": "Yellow",
+      "price": "473",
+      "stock": "928",
+      "id": 6
+    },
+    {
+      "id": 7,
+      "name": "PUMA Sneakers homme Puma Wired Run Homme 43",
+      "img": "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcSrCeoD0JfjTRKjEfrPfNRQGCTfCu7B8ptsYWRvqTzoggPy5-zoACIFylP4209U85scwyq1CdlIqNk&usqp=CAc",
+      "description": "PUMA Sneakers homme Puma Wired Run Homme 43\n41,99 €60 €\n+ 4,99 € de frais de port\nIntersport\n",
+      "color": "Red",
+      "price": "42",
+      "stock": "344"
+    }
+  ],
+  "orders": [
+    {
+      "id_order": 1,
+      "products": [
+        {
+          "product_id": 1,
+          "quantity": 1,
+          "price": 123
+        }
+      ],
+      "total_price": 123,
+      "client_id": 1
+    }
+  ],
+  "clients": [
+    {
+      "id": 1,
+      "email": "",
+      "firstname": "",
+      "lastname": "",
+      "orders": [
+        1
+      ]
+    }
+  ]
+}
