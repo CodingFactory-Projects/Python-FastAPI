@@ -79,15 +79,15 @@
   ],
   "orders": [
     {
-      "id": 1,
+      "id_order": 1,
       "products": [
         {
           "product_id": 1,
-          "variant": 0,
-          "quantity": 1
+          "quantity": 1,
+          "price": 123
         }
       ],
-      "total_price": 10,
+      "total_price": 123,
       "client_id": 1
     }
   ],

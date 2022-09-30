@@ -1,11 +1,8 @@
+from fastapi import FastAPI
+
+from methodes.sneakers import *
+from methodes.orders import *
+from methodes.shops import *
 from methodes.users import *
 
-
-@app.get("/")
-async def root():
-    return {"message": "Hello World"}
-
-
-@app.get("/hello/{name}")
-async def say_hello(name: str):
-    return {"message": f"Hello {name}"}
+# app = FastAPI()
