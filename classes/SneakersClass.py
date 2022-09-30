@@ -7,8 +7,8 @@ class Sneakers(BaseModel):
     name: str
     description: str
     colors: str
-    price: str
-    stock: str
+    price: float
+    stock: int
 
 
 class EditedSneaker(BaseModel):
