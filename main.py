@@ -49,7 +49,6 @@ async def get_orders_by_order_id(id_order: int):
 async def update_orders_by_order_id(order: Order):
     data = recupJson()
     for x in data["orders"]:
-        print(x["id_order"])
         if x["id_order"] == order.id_order:
             order.total_price = order.products.price * order.products.quantity
             with open('data.json', 'w') as f:
