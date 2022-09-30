@@ -1,4 +1,5 @@
-from models.sneakers import *
+from methodes.sneakers import *
+
 # app = FastAPI()
 
 
