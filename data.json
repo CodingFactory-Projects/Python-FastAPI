@@ -1,4 +1,4 @@
- {
+{
   "users": [
     {
       "id": 1,
@@ -26,7 +26,7 @@
   "categories": [
     {
       "id": 1,
-      "title": "Non-classé"
+      "title": "Non-class\u00e9"
     }
   ],
   "sneakers": [
@@ -34,7 +34,7 @@
       "id": 1,
       "img": "https://www.kindpng.com/picc/m/760-7602620_air-jordan-4-travis-scott-jordan-4-cactus.png",
       "name": "Travis Scott X Jordan 4 Cactus Jack",
-      "descriptions": "De par cette collaboration, le rappeur américain Travis Scott fait un hommage à Houston ",
+      "descriptions": "De par cette collaboration, le rappeur am\u00e9ricain Travis Scott fait un hommage \u00e0 Houston ",
       "colors": "UNIVERSITY BLUE/BLACK-VARSITY RED",
       "price": 199,
       "stock": 15
@@ -65,16 +65,42 @@
       "color": "Yellow",
       "price": "473",
       "stock": "928"
-
     },
     {
       "id": 7,
       "name": "PUMA Sneakers homme Puma Wired Run Homme 43",
       "img": "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcSrCeoD0JfjTRKjEfrPfNRQGCTfCu7B8ptsYWRvqTzoggPy5-zoACIFylP4209U85scwyq1CdlIqNk&usqp=CAc",
-      "description": "PUMA Sneakers homme Puma Wired Run Homme 43\n41,99 €60 €\n+ 4,99 € de frais de port\nIntersport\n",
+      "description": "PUMA Sneakers homme Puma Wired Run Homme 43\n41,99 \u20ac60 \u20ac\n+ 4,99 \u20ac de frais de port\nIntersport\n",
       "color": "Red",
       "price": "42",
       "stock": "344"
+    },
+    {
+      "id": 8,
+      "img": "testtttt",
+      "name": "testtttttttttt",
+      "description": "alan le boss",
+      "colors": "noir/marron",
+      "price": 7000000.0,
+      "stock": 100000
+    },
+    {
+      "id": 9,
+      "img": "testtttt",
+      "name": "testtttttttttt",
+      "description": "alan le boss",
+      "colors": "noir/marron",
+      "price": 7000000.0,
+      "stock": 100000
+    },
+    {
+      "id": 11,
+      "img": "elium",
+      "name": "emil",
+      "description": "elim le boss",
+      "colors": "noir/marron",
+      "price": 899999999.0,
+      "stock": 100000
     }
   ],
   "orders": [
@@ -88,6 +114,16 @@
         }
       ],
       "total_price": 123,
+      "client_id": 1
+    },
+    {
+      "id_order": 4,
+      "products": {
+        "product_id": 3,
+        "price": 145.0,
+        "quantity": 5
+      },
+      "total_price": 725.0,
       "client_id": 1
     }
   ],

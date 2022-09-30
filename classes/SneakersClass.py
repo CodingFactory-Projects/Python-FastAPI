@@ -2,7 +2,7 @@ from pydantic import BaseModel
 
 
 class Sneakers(BaseModel):
-    id: int
+    id: int = None
     img: str
     name: str
     description: str
