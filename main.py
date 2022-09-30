@@ -1,6 +1,4 @@
-from fastapi import FastAPI
-
-app = FastAPI()
+from models.users import *
 
 
 @app.get("/")
