@@ -1,4 +1,4 @@
-from models.users import *
+from methodes.users import *
 
 
 @app.get("/")
