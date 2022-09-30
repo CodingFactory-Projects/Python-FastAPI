@@ -1,6 +1,4 @@
-from fastapi import FastAPI
-
-app = FastAPI()
+from models.shops import *
 
 
 @app.get("/")
@@ -8,6 +6,6 @@ async def root():
     return {"message": "Hello World"}
 
 
-@app.get("/hello/{name}")
+@app.get("/hello/{name")
 async def say_hello(name: str):
-    return {"message": f"Hello {name}"}
+    return {"messages": f"Hello {name}"}
