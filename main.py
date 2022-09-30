@@ -45,7 +45,7 @@ async def get_orders_by_order_id(id_order: int):
     return "Not found"
 
 #Update command thanks to its id_order
-@app.patch("/orders/")
+@app.patch("/orders")
 async def update_orders_by_order_id(order: Order):
     data = recupJson()
     for x in data["orders"]:
@@ -61,11 +61,15 @@ async def update_orders_by_order_id(order: Order):
 @app.post("/orders")
 async def create_order(order: Order):
     data = recupJson()
-    order.total_price = order.products.price * order.products.quantity
-    with open('data.json','w') as f:
-        data["orders"].append(order.dict())
-        f.write(json.dumps(data, sort_keys=True, indent=4))
-    return "Your order has been registered "
+    for x in data["orders"]:
+        if x["id_order"] == order.id_order:
+            return "Your id_order is already use. Try again"
+        else:
+            order.total_price = order.products.price * order.products.quantity
+            with open('data.json','w') as f:
+                data["orders"].append(order.dict())
+                f.write(json.dumps(data, sort_keys=True, indent=4))
+        return "Your order has been registered "
 #Allows you to delete an order
 @app.delete("/orders/{id_order}")
 async def delete_order(id_order: int):
@@ -77,7 +81,7 @@ async def delete_order(id_order: int):
                 f.write(json.dumps(data, sort_keys=True, indent=4))
     return "Your order has been deleted "
 #Allows you to delete all order
-@app.delete("/orders/")
+@app.delete("/orders")
 async def delete_all_orders():
     data = recupJson()
     for x in data["orders"]:
