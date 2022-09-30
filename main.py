@@ -18,13 +18,15 @@ class shops(BaseModel):
 
 
 #Here we have the "get" methods
-
+#Get all shops
 @app.get("/shops")
 async def get_shops():
+    #opening and loading the json
     with open('data.json') as f:
         data = json.load(f)
         return data['shops']
 
+#Get a specific shop by id
 @app.get("/shop/{shop_id}")
 async def get_shop(shop_id: int):
     with open('data.json') as f:
@@ -34,7 +36,7 @@ async def get_shop(shop_id: int):
             return shop
 
 #Here we have the "post" methods
-
+#We can create new shops
 @app.post("/shops")
 async def create_shop(shop: shops):
     # ouvre le json
@@ -48,7 +50,8 @@ async def create_shop(shop: shops):
     return "shop"
 
 #Here we have the "post" methods
-
+#We can delete existing shops
+#If the shop already exists, we can delete it, otherwise if it doesnt, we cannot delete it so an error is returned
 @app.delete("/shops")
 async def delete_shop(shop_id: int):
     with open('data.json') as f:
